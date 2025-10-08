@@ -1,0 +1,41 @@
+/* table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: inherit;
+}
+
+table th,
+table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  /* border: 1px solid #626880; */
+  vertical-align: top;
+}
+
+table th {
+  background-color: var(--table-highlight);
+  color: var(--text);
+  font-weight: 700;
+  /* border-bottom: 2px solid var(--text-secondary); */
+}
+
+table td {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+table tr:nth-child(even) td {
+  background-color: var(--table-background);
+}
+
+table tr:hover td {
+  background-color: var(--table-highlight);
+  color: var(--link-color);
+}
+
+table td:empty {
+  background-color: transparent;
+  /* border: 1px solid transparent; */
+}

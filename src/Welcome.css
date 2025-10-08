@@ -56,7 +56,7 @@ a {
 }
 
 .type {
-  width: fit-content;
+  width: 30ch;
   border-right: 10px solid var(--link-color);
   animation: blink 1s step-end infinite;
   animation-delay: 3s;
@@ -79,46 +79,29 @@ a {
   50% { border-color: transparent;}
 }
 
-/* table styling */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1rem 0;
-  font-size: inherit;
+.picker {
+  position: relative;
 }
 
-table th,
-table td {
-  padding: 0.75rem 1rem;
-  text-align: left;
-  /* border: 1px solid #626880; */
-  vertical-align: top;
+.arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #333; /* Arrow color */
+  transition: top 0.2s ease-in-out; /* Smooth transition for arrow movement */
+  left: -10px; /* Adjust position relative to menu items */
+  top: 0; /* Initial top position */
 }
 
-table th {
-  background-color: var(--highlight);
-  color: var(--text);
-  font-weight: 700;
-  /* border-bottom: 2px solid var(--text-secondary); */
+.role-item {
+  cursor: pointer;
 }
 
-table td {
-  background-color: var(--background);
-  color: var(--text);
-}
-
-table tr:nth-child(even) td {
-  background-color: var(--table-background);
-}
-
-table tr:hover td {
-  background-color: var(--table-highlight);
+.roles .selected {
   color: var(--link-color);
-}
-
-table td:empty {
-  background-color: transparent;
-  /* border: 1px solid transparent; */
+  font-weight: 700;
 }
 
 /* dynamic resizing */

@@ -1,92 +1,83 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './Welcome.css'
 
 function Welcome() {
-  const [count, setCount] = useState(0)
+  function moveArrow(direction) {
+    // Keep the scroll the same, dont scroll when moving the arrow
+    window.scrollTo(0, document.body.scrollHeight);
+    const roles = document.querySelectorAll('.role-item');
+    console.log(roles);
+    const arrow = document.getElementById('arrow-pointer');
+    let selectedIndex = Array.from(roles).findIndex(role => role.classList.contains('selected'));
+    console.log("Selected index: ",selectedIndex);
+    // Remove 'selected' class from the current item
+    roles[selectedIndex].classList.remove('selected');
+
+    // Update the index based on the direction
+    if (direction === 'up') {
+      selectedIndex = (selectedIndex - 1 + roles.length) % roles.length;
+    } else if (direction === 'down') {
+      selectedIndex = (selectedIndex + 1) % roles.length;
+    }
+    console.log("New selected index: ",selectedIndex);
+    // Add 'selected' class to the new item
+    roles[selectedIndex].classList.add('selected');
+    
+    // Move the arrow to the new position
+    const newTop = roles[selectedIndex].offsetTop;
+    arrow.style.top = `${newTop}px`;
+  }
+
+  function handleKeyDown(event) {
+    if (event.key === 'ArrowUp') {
+      console.log('up');
+      moveArrow('up');
+    } else if (event.key === 'ArrowDown') {
+      console.log('down');
+      moveArrow('down');
+    }
+  }
+
+  window.addEventListener('keydown', handleKeyDown);
 
   return (
-    <div class="typeme">
-      <div><span class="text-secondary">ngavu@welcome</span><span class="text-background">~ </span><span
-        class="cursor">$ </span>me -h</div>
-      <section class="output">
-        <ul class="links">
+    <div className="typeme">
+      <div><span className="text-secondary">ngavu@welcome</span><span className="text-background">~ </span><span
+        className="cursor">$ </span>me -h</div>
+      <section className="output">
+        <ul className="links">
           <li>
-            <a class="linkedin" href="https://www.linkedin.com/in/nga-vu-269626226/" alt="linkedin" target="_blank">
+            <a className="linkedin" href="https://www.linkedin.com/in/nga-vu-269626226/" alt="linkedin" target="_blank">
               LinkedIn
             </a>
           </li>
           <li>
-            <a class="github" href="https://github.com/ngavu2004" alt="github" target="_blank">
+            <a className="github" href="https://github.com/ngavu2004" alt="github" target="_blank">
               GitHub
             </a>
           </li>
           <li>
-            <a class="email" alt="email" target="_blank">
+            <a className="email" alt="email" target="_blank">
               Email: vuthiquynhga4@gmail.com
             </a>
           </li>
         </ul>
       </section>
-      <section class="output">
-        <div><span class="text-secondary">ngavu@welcome </span><span class="text-background">~ </span><span
-          class="cursor">$ </span>ls tech_stack</div>
-        <table>
-          <thead>
-            <tr>
-              <th>Programming Languages</th>
-              <th>Frameworks & Libraries</th>
-              <th>Databases</th>
-              <th>Tools & Platforms</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Golang</td>
-              <td>Django</td>
-              <td>PostgreSQL</td>
-              <td>Docker</td>
-            </tr>
-            <tr>
-              <td>Python</td>
-              <td>React</td>
-              <td>MySQL</td>
-              <td>Kubernetes</td>
-            </tr>
-            <tr>
-              <td>TypeScript</td>
-              <td>Node.js</td>
-              <td>SQLite</td>
-              <td>AWS</td>
-            </tr>
-            <tr>
-              <td>C/C++</td>
-              <td>Flask</td>
-              <td>MongoDB</td>
-              <td>Git</td>
-            </tr>
-            <tr>
-              <td></td>
-              <td>FastAPI</td>
-              <td></td>
-              <td>Linux</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-      <section class="output">
+      <section className="output">
         <div>
-          <span class="text-secondary">ngavu@welcome </span>
-          <span class="text-background">~ </span>
-          <span class="cursor">$ </span>
+          <span className="text-secondary">ngavu@welcome </span>
+          <span className="text-background">~ </span>
+          <span className="cursor">$ </span>
           help
-          <p>Choose your role: </p>
-          <ul class="roles">
-            <li>Recruiter</li>
-            <li>Developer</li>
-            <li>Just look around lmao</li>
-          </ul>
+          <p>Choose your role (use the arrow key to move up and down): </p>
+          <div className="picker">
+            <div id="arrow-pointer" className="arrow">▶</div>
+            <ul className="roles">
+              <li className="role-item selected">Recruiter</li>
+              <li className="role-item">Developer</li>
+              <li className="role-item">Just look around lmao</li>
+            </ul>
+          </div>
+          
         </div>
       </section>
     </div>
