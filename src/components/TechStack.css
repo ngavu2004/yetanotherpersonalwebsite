@@ -1,4 +1,7 @@
 /* table styling */
+.tech-stack {
+    animation: fade 2s;
+}
 table {
   width: 100%;
   border-collapse: collapse;

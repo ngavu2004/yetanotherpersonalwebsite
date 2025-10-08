@@ -1,6 +1,10 @@
 import './Welcome.css'
+import { useState } from 'react';
+import MainPage from './pages/mainPage.jsx';
 
 function Welcome() {
+  let [selectedRole, setSelectedRole] = useState('None');
+
   function moveArrow(direction) {
     // This function moves the arrow up and down the list of roles
 
@@ -45,7 +49,11 @@ function Welcome() {
       moveArrow('down');
     } else if (event.key === 'Enter') {
       const selectedRole = document.querySelector('.role-item.selected').textContent;
-      
+      setSelectedRole(selectedRole);
+      console.log("Selected role: ", selectedRole);
+
+      // Once hit enter, remove the event listener to prevent further changes
+      window.removeEventListener('keydown');
     }
   }
 
@@ -92,6 +100,7 @@ function Welcome() {
           
         </div>
       </section>
+      {selectedRole !== 'None' && <MainPage role={selectedRole} />}
     </div>
   )
 }
