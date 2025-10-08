@@ -1,0 +1,4 @@
+Just some plan for this project
+1. The welcome part:
+Have some introduction, about me,
+THEN, let user choose the role: Recruiter, Developer, Visitor

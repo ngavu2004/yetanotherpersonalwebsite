@@ -1,0 +1,129 @@
+/* Frappe Theme
+ *
+ * text: #c6d0f5
+ * text-secondary: #8CAAEE
+ * text-background: #B5BFE2
+ * prompt: #EA999C
+ * URLs: #f2d5cf
+ * selection: #626880
+ * active border: #babbf1
+ * background: #303446
+ * */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+* {
+  background: var(--background);
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  color: var(--text);
+}
+
+a {
+  color: --var(--link-color);
+  text-decoration: none;
+}
+
+.text-background {
+  color: var(--text-background);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+.linkedin:hover {
+  color: var(--linkedin-color);
+}
+
+.github:hover {
+  color: var(--github-color);
+}
+
+.cursor {
+  color: var(--link-color);
+}
+
+.output {
+  width: 100%;
+  max-width: 80ch;
+  animation: fade 5s;
+}
+
+.typeme {
+  animation: typing 2s steps(25);
+  /* white-space: nowrap; */
+  overflow: hidden;
+}
+
+.type {
+  width: fit-content;
+  border-right: 10px solid var(--link-color);
+  animation: blink 1s step-end infinite;
+  animation-delay: 3s;
+}
+
+/* animation */
+
+@keyframes fade {
+  0% { opacity: 0}
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes typing {
+  0% { width: 0; }
+  100% { width: 40ch; }
+}
+    
+@keyframes blink {
+  50% { border-color: transparent;}
+}
+
+/* table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: inherit;
+}
+
+table th,
+table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  /* border: 1px solid #626880; */
+  vertical-align: top;
+}
+
+table th {
+  background-color: var(--highlight);
+  color: var(--text);
+  font-weight: 700;
+  /* border-bottom: 2px solid var(--text-secondary); */
+}
+
+table td {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+table tr:nth-child(even) td {
+  background-color: var(--table-background);
+}
+
+table tr:hover td {
+  background-color: var(--table-highlight);
+  color: var(--link-color);
+}
+
+table td:empty {
+  background-color: transparent;
+  /* border: 1px solid transparent; */
+}
+
+/* dynamic resizing */
+@media (min-width:600px) {
+  body {
+    font-size: 1.25rem;
+  }
+}
