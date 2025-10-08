@@ -10,3 +10,68 @@
   --table-highlight: #414559;
   --table-background: #292c3c;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap');
+
+* {
+  background: var(--background);
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 700;
+  color: var(--text);
+}
+
+a {
+  color: --var(--link-color);
+  text-decoration: none;
+}
+
+.text-background {
+  color: var(--text-background);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.output {
+  width: 100%;
+  max-width: 80ch;
+  animation: fade 5s;
+}
+
+.typeme {
+  animation: typing 2s steps(25);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.type {
+  width: 30ch;
+  border-right: 10px solid var(--link-color);
+  animation: blink 1s step-end infinite;
+  animation-delay: 3s;
+}
+
+/* animation */
+
+@keyframes fade {
+  0% { opacity: 0}
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes typing {
+  0% { width: 0; }
+  100% { width: 40ch; }
+}
+    
+@keyframes blink {
+  50% { border-color: transparent;}
+}
+
+/* dynamic resizing */
+@media (min-width:600px) {
+  body {
+    font-size: 1.25rem;
+  }
+}

@@ -2,13 +2,18 @@ import './Welcome.css'
 
 function Welcome() {
   function moveArrow(direction) {
+    // This function moves the arrow up and down the list of roles
+
     // Keep the scroll the same, dont scroll when moving the arrow
     window.scrollTo(0, document.body.scrollHeight);
+
+    // Get all role items and the arrow element
     const roles = document.querySelectorAll('.role-item');
-    console.log(roles);
     const arrow = document.getElementById('arrow-pointer');
+
+    // Find the currently selected item
     let selectedIndex = Array.from(roles).findIndex(role => role.classList.contains('selected'));
-    console.log("Selected index: ",selectedIndex);
+
     // Remove 'selected' class from the current item
     roles[selectedIndex].classList.remove('selected');
 
@@ -18,7 +23,7 @@ function Welcome() {
     } else if (direction === 'down') {
       selectedIndex = (selectedIndex + 1) % roles.length;
     }
-    console.log("New selected index: ",selectedIndex);
+
     // Add 'selected' class to the new item
     roles[selectedIndex].classList.add('selected');
     
@@ -27,13 +32,20 @@ function Welcome() {
     arrow.style.top = `${newTop}px`;
   }
 
+  const roles_to_page = {
+    'Recruiter': '/recruiter',
+    'Developer': '/developer',
+    'Just look around lmao': '/explore'
+  }
+
   function handleKeyDown(event) {
     if (event.key === 'ArrowUp') {
-      console.log('up');
       moveArrow('up');
     } else if (event.key === 'ArrowDown') {
-      console.log('down');
       moveArrow('down');
+    } else if (event.key === 'Enter') {
+      const selectedRole = document.querySelector('.role-item.selected').textContent;
+      
     }
   }
 
